@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<alipay>
+
+  <!--seller_email是支付宝登录账号，格式一般是邮箱或手机号。-->
+  <seller_email>ething@gongnsi.net</seller_email>
+
+  <!--收款支付宝账号 商家ID，以2088开头由16位纯数字组成的字符串，一般情况下收款账号就是签约账号-->
+  <pid>2088421378069789</pid>
+
+  <!--MD5密钥，安全检验码，由数字和字母组成的32位字符串，查看地址：https://b.alipay.com/order/pidAndKey.htm-->
+  <key>jirsqgu5a0jiqmo3bdb1aaq22bbdhyzx</key>
+
+  <!--支付完成异步通知页面路径 -->
+  <notify_url>/pay/AliPayNotify</notify_url>
+
+  <!--wap支付完成异步通知页面路径 -->
+  <wapnotify_url>/wap/alipay/AliPayNotify</wapnotify_url>
+  <!--支付完成页面跳转同步通知页面路径-->
+  <return_url>/Pay/OrderPaySuccess</return_url>
+
+  <!--退款异步回调 -->
+  <refund_notify_url>/pay/AliRefundNotify</refund_notify_url>
+
+</alipay>
