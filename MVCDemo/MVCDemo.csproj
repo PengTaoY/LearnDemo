@@ -148,6 +148,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="autosuggest.js-master\.gitignore" />
+    <Content Include="autosuggest.js-master\autosuggest.css" />
+    <Content Include="autosuggest.js-master\autosuggest.js" />
+    <Content Include="autosuggest.js-master\autosuggest.min.css" />
+    <Content Include="autosuggest.js-master\autosuggest.min.js" />
+    <Content Include="autosuggest.js-master\example\css\bootstrap.min.css" />
+    <Content Include="autosuggest.js-master\example\example.html" />
+    <Content Include="autosuggest.js-master\example\js\bootstrap.min.js" />
+    <Content Include="autosuggest.js-master\example\js\jquery.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -159,6 +168,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="autosuggest.js-master\example\city.json" />
+    <Content Include="autosuggest.js-master\example\js\jquery.min.map" />
+    <Content Include="autosuggest.js-master\LICENSE" />
+    <Content Include="autosuggest.js-master\README.md" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -185,6 +198,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
+    <Content Include="Views\Home\AutoComplate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

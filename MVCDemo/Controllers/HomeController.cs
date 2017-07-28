@@ -32,5 +32,29 @@ namespace MVCDemo.Controllers
             return Content("&times=");
 
         }
+
+
+        public ActionResult AutoComplate()
+        {
+            return View();
+        }
+
+        public ActionResult AutoData(string skeyword)
+        {
+            List<string> ls = new List<string>();
+            ls.Add("ABC");
+            ls.Add("CDE");
+            ls.Add("DEF");
+            return Json(ls, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public class MyTest
+        {
+            public int Id { get; set; }
+
+            public string ShortName { get; set; }
+        }
+
     }
 }

@@ -11,13 +11,19 @@ namespace Demo
     {
         static void Main(string[] args)
         {
+            string guid = Guid.NewGuid().ToString("N").Substring(0, 12);
+
+            DateTime dt1 = DateTime.Now;
+            DateTime dt2 = dt1.AddSeconds(10);
+            long sp1 = dt1.Ticks;
+            long sp2 = dt2.Ticks;
 
 
-            File.WriteAllText(@"D:\TempResult.txt", "临时内容", Encoding.UTF8);
+            //File.WriteAllText(@"D:\TempResult.txt", "临时内容", Encoding.UTF8);
 
-            var sr = new StreamReader(@"D:\TempResult.txt", Encoding.UTF8);
-            string test = sr.ReadToEnd();
-            string test2 = sr.ReadLine();
+            //var sr = new StreamReader(@"D:\TempResult.txt", Encoding.UTF8);
+            //string test = sr.ReadToEnd();
+            //string test2 = sr.ReadLine();
 
 
 
