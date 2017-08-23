@@ -1,0 +1,118 @@
+﻿
+//------------------------------------------------------------------------------
+//     此代码由T4模板自动生成
+//	   生成时间 2017-08-23 10:54:37 
+//     对此文件的更改可能会导致不正确的行为，并且如果重新生成代码，这些更改将会丢失。 
+//------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using BeeCre.EThing.Infrastructure.Utilities;
+using BeeCre.EThing.Model.Enum;
+using Kina.Infrastructure.Utilities;
+
+namespace BeeCre.EThing.Model
+{	    
+	/// <summary>
+	/// Coupon_patchEntity
+	/// </summary>	
+	public class Coupon_patchEntity
+	{
+		/// <summary>
+		/// 优惠券批次Id
+		/// </summary>
+		public Guid CouponPatchId { get; set; }
+		/// <summary>
+		/// 优惠券类型 1满减,2代金,3抵用,4折扣
+		/// </summary>
+		public int CouponType { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public string CouponName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public string CouponImg { get; set; }
+		/// <summary>
+		/// 满减最小值
+		/// </summary>
+		public decimal? FullFeeAmount { get; set; }
+		/// <summary>
+		/// 满减-优惠金额 \ 折扣率 \ 抵用券类型
+		/// </summary>
+		public decimal DiscountFee { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public DateTime? ValidStartDate { get; set; }
+		/// <summary>
+		/// 可用区域, 0-通用,0以上参考枚举
+		/// </summary>
+		public int? AvalibleAreaId { get; set; }
+		/// <summary>
+		/// 经销商ID,0表示通用
+		/// </summary>
+		public int? DealerId { get; set; }
+		/// <summary>
+		/// 过期天数-适用于领取后激活
+		/// </summary>
+		public int? ExpiredDay { get; set; }
+		/// <summary>
+		/// 领取类型
+		/// </summary>
+		public int? CouponReceiveType { get; set; }
+		/// <summary>
+		/// 指定商品Id
+		/// </summary>
+		public int? DealerProductId { get; set; }
+		/// <summary>
+		/// 状态
+		/// </summary>
+		public int? Status { get; set; }
+		/// <summary>
+		/// 发布数量
+		/// </summary>
+		public int PublishAmount { get; set; }
+		/// <summary>
+		/// 领取数量
+		/// </summary>
+		public int ReceiveAmount { get; set; }
+		/// <summary>
+		/// 核销数量
+		/// </summary>
+		public int UsedAmount { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public DateTime CreateDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public int CreateUserId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public DateTime? UpdateDate { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public DateTime? UpdateUserId { get; set; }
+ 
+    }
+
+	public class Coupon_patchEntityViewModel : Coupon_patchEntity
+	{
+
+    }
+
+	public class patchQueryCondWithPaperModel : JqGridRequesPara
+	{
+
+    }
+}
+
+
+
