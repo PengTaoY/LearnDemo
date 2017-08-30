@@ -1,0 +1,60 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".txt" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ assembly name="System.Data.dll" #>
+<#@ assembly name="System.Data.DataSetExtensions.dll" #>
+<#@ assembly name="System.Xml.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ include file="$(ProjectDir)\SqlServerT4\DbHelper.ttinclude"#>
+//------------------------------------------------------------------------------
+//     此代码由T4模板自动生成
+//	   生成时间 <#=DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")#> 
+//     对此文件的更改可能会导致不正确的行为，并且如果重新生成代码，这些更改将会丢失。 
+//------------------------------------------------------------------------------
+<# 
+	var cName=config.TableName+"Entity";
+	var QCName = config.TableName.Substring(config.TableName.IndexOf('_') + 1)+"QueryCondWithPaperModel";
+ #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using BeeCre.EThing.Infrastructure.Utilities;
+using BeeCre.EThing.Model.Enum;
+using Kina.Infrastructure.Utilities;
+
+namespace BeeCre.EThing.Model
+{	    
+	/// <summary>
+	/// <#=cName#>
+	/// </summary>	
+	public class <#=cName#>
+	{
+<# foreach(DbColumn column in DbHelper.GetDbColumns(config.ConnectionString, config.DbDatabase, config.TableName)){#>
+		/// <summary>
+		/// <#=column.Remark#>
+		/// </summary>
+		public <#= column.CSharpType#><# if(column.CommonType.IsValueType && column.IsNullable){#>?<#}#> <#=column.ColumnName#> { get; set; }
+<#}#> 
+    }
+
+	public class <#=cName#>ViewModel : <#=cName#>
+	{
+
+    }
+
+	public class <#=QCName#> : JqGridRequesPara
+	{
+
+    }
+}
+
+
+

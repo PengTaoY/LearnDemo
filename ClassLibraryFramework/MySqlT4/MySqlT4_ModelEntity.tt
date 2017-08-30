@@ -1,0 +1,37 @@
+﻿<#@ output extension=".txt" #>
+<#@ include file="$(ProjectDir)/MySqlT4\DbHelper.ttinclude"#>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using BeeCre.EThing.Infrastructure.Utilities;
+using BeeCre.EThing.Model.Enum;
+using Kina.Infrastructure.Utilities;
+
+namespace BeeCre.EThing.Model
+{	    
+	/// <summary>
+	/// <#=config.ModelName#>
+	/// </summary>	
+	public class <#=config.ModelName#>
+	{
+<# foreach(DbColumn column in DbHelper.GetDbColumns(config.ConnectionString, config.DbDatabase, config.TableName)){#>
+		/// <summary>
+		/// <#=column.Comment#>
+		/// </summary>
+		public <#= column.CSharpType#><# if(column.CommonType.IsValueType && column.IsNullable){#>?<#}#> <#=column.Field#> { get; set; }
+<#}#> 
+    }
+
+	public class <#=config.ModelName#>ViewModel : <#=config.ModelName#>
+	{
+
+    }
+
+	public class <#=config.QModelName#> : JqGridRequesPara
+	{
+
+    }
+}

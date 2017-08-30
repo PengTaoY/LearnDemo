@@ -1,0 +1,30 @@
+﻿<#@ output extension=".txt" #>
+<#@ include file="$(ProjectDir)/MySqlT4\DbHelper.ttinclude"#>
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using BeeCre.EThing.Infrastructure.ConstDef;
+using BeeCre.EThing.Infrastructure.Utilities;
+using BeeCre.EThing.Model.Enum;
+using BeeCre.EThing.Repository;
+using Kina.Infrastructure.Components;
+using Kina.Infrastructure.ConstDef;
+using Kina.Infrastructure.Data;
+using Kina.Infrastructure.Repository;
+using Kina.Infrastructure.Service;
+using BeeCre.EThing.Model;
+
+namespace BeeCre.EThing.Service.Implementations
+{	
+	[Component]	
+	public class <#=config.ServiceName#> : BaseService<<#=config.ModelName#>>, I<#=config.ServiceName#>
+	{
+		public <#=config.ServiceName#>(IRepository<<#=config.ModelName#>> repository) : base(repository)
+		{
+
+		}
+    }
+}

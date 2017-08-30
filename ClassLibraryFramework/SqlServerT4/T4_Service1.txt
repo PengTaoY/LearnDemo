@@ -1,0 +1,36 @@
+﻿
+//------------------------------------------------------------------------------
+//     此代码由T4模板自动生成
+//	   生成时间 2017-08-30 16:15:49 
+//     对此文件的更改可能会导致不正确的行为，并且如果重新生成代码，这些更改将会丢失。
+//------------------------------------------------------------------------------
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using BeeCre.EThing.Infrastructure.ConstDef;
+using BeeCre.EThing.Infrastructure.Utilities;
+using BeeCre.EThing.Model.Enum;
+using BeeCre.EThing.Repository;
+using Kina.Infrastructure.Components;
+using Kina.Infrastructure.ConstDef;
+using Kina.Infrastructure.Data;
+using Kina.Infrastructure.Repository;
+using Kina.Infrastructure.Service;
+using BeeCre.EThing.Model;
+
+namespace BeeCre.EThing.Service.Implementations
+{	
+	[Component]	
+	public class Coupon_patchService : BaseService<Coupon_patchEntity>, ICoupon_patchService
+	{
+		public Coupon_patchService(IRepository<Coupon_patchEntity> repository) : base(repository)
+		{
+
+		}
+    }
+}
+
+
+

@@ -1,0 +1,19 @@
+﻿<#@ output extension=".txt" #>
+<#@ include file="$(ProjectDir)/MySqlT4\DbHelper.ttinclude"#>
+
+using BeeCre.EThing.Infrastructure.ConstDef;
+using Kina.Infrastructure.Components;
+using Kina.Infrastructure.Repository;
+using BeeCre.EThing.Model;
+
+namespace BeeCre.EThing.Repository.Implementations
+{	
+	[Component]
+	public class <#=config.RepositoryName#> : BaseRepository<<#=config.ModelName#>>,I<#=config.RepositoryName#>
+	{
+		public <#=config.RepositoryName#>() : base(DataBaseType.<#=config.DbDatabase#>)
+		{
+			SetDbTableInfo(Constants.<#=config.TableName#>);
+		}
+    }
+}

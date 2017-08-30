@@ -1,0 +1,15 @@
+﻿<#@ output extension=".txt" #>
+<#@ include file="$(ProjectDir)/MySqlT4\DbHelper.ttinclude"#>
+
+using System;
+using System.Collections.Generic;
+using Kina.Infrastructure.Service;
+using BeeCre.EThing.Model;
+
+namespace BeeCre.EThing.Service
+{	
+	public interface <#=config.IServiceName#> : IService<<#=config.ModelName#>>
+	{
+	
+    }
+}

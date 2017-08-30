@@ -1,0 +1,29 @@
+﻿
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using BeeCre.EThing.Infrastructure.ConstDef;
+using BeeCre.EThing.Infrastructure.Utilities;
+using BeeCre.EThing.Model.Enum;
+using BeeCre.EThing.Repository;
+using Kina.Infrastructure.Components;
+using Kina.Infrastructure.ConstDef;
+using Kina.Infrastructure.Data;
+using Kina.Infrastructure.Repository;
+using Kina.Infrastructure.Service;
+using BeeCre.EThing.Model;
+
+namespace BeeCre.EThing.Service.Implementations
+{	
+	[Component]	
+	public class T4TestService : BaseService<T4TestEntity>, IT4TestService
+	{
+		public T4TestService(IRepository<T4TestEntity> repository) : base(repository)
+		{
+
+		}
+    }
+}

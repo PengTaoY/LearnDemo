@@ -1,0 +1,25 @@
+﻿
+//------------------------------------------------------------------------------
+//     此代码由T4模板自动生成
+//	   生成时间 2017-08-30 16:15:49 
+//     对此文件的更改可能会导致不正确的行为，并且如果重新生成代码，这些更改将会丢失。
+//------------------------------------------------------------------------------
+using BeeCre.EThing.Infrastructure.ConstDef;
+using Kina.Infrastructure.Components;
+using Kina.Infrastructure.Repository;
+using BeeCre.EThing.Model;
+
+namespace BeeCre.EThing.Repository.Implementations
+{	
+	[Component]
+	public class Coupon_patchRepository : BaseRepository<Coupon_patchEntity>,ICoupon_patchRepository
+	{
+		public Coupon_patchRepository() : base(DataBaseType.Ething_News)
+		{
+			SetDbTableInfo(Constants.Coupon_patch);
+		}
+    }
+}
+
+
+

@@ -1,0 +1,5 @@
+﻿1.对添加的数据表生成代码。先把【T4CodeGenerator】文件夹包含在项目中来。然后需要在【DbHelper.ttinclude】文件中修改config类中的配置。一般情况下只需要修改：1.连接的数据库。2.数据库名。3.数据表名称。
+
+2.点击VS菜单中的生成->转换所有T4模板。这时候就会生成IRepository、Repository、IService、Service、ModelEntity这五个.txt文件。然后将文件中的内容覆盖到项目的【Business】文件夹中的对应的.cs文件中即可。
+
+3.最后将该【T4CodeGenerator】文件夹是从项目中排除。然后编译项目，如果项目编译不通过，查找错误原因并解决。编译通过后，则根据业务需求编写剩下的代码。

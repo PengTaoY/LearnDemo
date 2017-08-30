@@ -1,0 +1,15 @@
+﻿
+
+using System.Collections.Generic;
+using System;
+using BeeCre.EThing.Model;
+using Kina.Infrastructure.Repository;
+
+namespace BeeCre.EThing.Repository
+{	
+	
+	public interface IT4TestRepository : IRepository<T4TestEntity>
+	{
+
+    }
+}

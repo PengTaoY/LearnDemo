@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{455FEA52-B691-4D6F-91BA-C0E9C83C112A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ClassLibraryFramework</RootNamespace>
+    <AssemblyName>ClassLibraryFramework</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="MySqlT4\DbHelper.ttinclude" />
+    <None Include="packages.config" />
+    <None Include="SqlServerT4\DbHelper.ttinclude" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="MySqlT4\MySqlT4_IRepository.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MySqlT4_IRepository.txt</LastGenOutput>
+    </Content>
+    <Content Include="MySqlT4\MySqlT4_IRepository.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MySqlT4_IRepository.tt</DependentUpon>
+    </Content>
+    <Content Include="MySqlT4\MySqlT4_IService.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MySqlT4_IService.txt</LastGenOutput>
+    </Content>
+    <Content Include="MySqlT4\MySqlT4_IService.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MySqlT4_IService.tt</DependentUpon>
+    </Content>
+    <Content Include="MySqlT4\MySqlT4_ModelEntity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MySqlT4_ModelEntity.txt</LastGenOutput>
+    </Content>
+    <Content Include="MySqlT4\MySqlT4_ModelEntity.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MySqlT4_ModelEntity.tt</DependentUpon>
+    </Content>
+    <Content Include="MySqlT4\MySqlT4_Repository.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MySqlT4_Repository.txt</LastGenOutput>
+    </Content>
+    <Content Include="MySqlT4\MySqlT4_Repository.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MySqlT4_Repository.tt</DependentUpon>
+    </Content>
+    <Content Include="MySqlT4\MySqlT4_Service.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MySqlT4_Service.txt</LastGenOutput>
+    </Content>
+    <Content Include="MySqlT4\MySqlT4_Service.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MySqlT4_Service.tt</DependentUpon>
+    </Content>
+    <Content Include="MySqlT4\MySql.Data.dll" />
+    <Content Include="SqlServerT4\T4_IRepository.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4_IRepository1.txt</LastGenOutput>
+    </Content>
+    <Content Include="SqlServerT4\T4_IRepository.txt" />
+    <Content Include="SqlServerT4\T4_IRepository1.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4_IRepository.tt</DependentUpon>
+    </Content>
+    <Content Include="SqlServerT4\T4_IService.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4_IService1.txt</LastGenOutput>
+    </Content>
+    <Content Include="SqlServerT4\T4_IService.txt" />
+    <Content Include="SqlServerT4\T4_IService1.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4_IService.tt</DependentUpon>
+    </Content>
+    <Content Include="SqlServerT4\T4_ModelEntity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4_ModelEntity1.txt</LastGenOutput>
+    </Content>
+    <Content Include="SqlServerT4\T4_ModelEntity1.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4_ModelEntity.tt</DependentUpon>
+    </Content>
+    <Content Include="SqlServerT4\T4_Repository.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4_Repository1.txt</LastGenOutput>
+    </Content>
+    <Content Include="SqlServerT4\T4_Repository.txt" />
+    <Content Include="SqlServerT4\T4_Repository1.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4_Repository.tt</DependentUpon>
+    </Content>
+    <Content Include="SqlServerT4\T4_Service.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4_Service1.txt</LastGenOutput>
+    </Content>
+    <Content Include="SqlServerT4\T4_Service.txt" />
+    <Content Include="SqlServerT4\T4_Service1.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4_Service.tt</DependentUpon>
+    </Content>
+    <Content Include="SqlServerT4\T4使用说明书.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

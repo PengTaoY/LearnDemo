@@ -1,0 +1,25 @@
+﻿
+//------------------------------------------------------------------------------
+//     此代码由T4模板自动生成
+//	   生成时间 2017-08-16 13:24:36 
+//     对此文件的更改可能会导致不正确的行为，并且如果重新生成代码，这些更改将会丢失。
+//------------------------------------------------------------------------------
+using BeeCre.EThing.Infrastructure.ConstDef;
+using Kina.Infrastructure.Components;
+using Kina.Infrastructure.Repository;
+using BeeCre.EThing.Model;
+
+namespace BeeCre.EThing.Repository.Implementations
+{	
+	[Component]
+	public class Act_ActivityFeeRepository : BaseRepository<Act_ActivityFeeEntity>,IAct_ActivityFeeRepository
+	{
+		public Act_ActivityFeeRepository() : base(DataBaseType.Ething_News_Party)
+		{
+			SetDbTableInfo(Constants.Act_ActivityFee);
+		}
+    }
+}
+
+
+

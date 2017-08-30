@@ -1,0 +1,18 @@
+﻿
+
+using BeeCre.EThing.Infrastructure.ConstDef;
+using Kina.Infrastructure.Components;
+using Kina.Infrastructure.Repository;
+using BeeCre.EThing.Model;
+
+namespace BeeCre.EThing.Repository.Implementations
+{	
+	[Component]
+	public class T4TestRepository : BaseRepository<T4TestEntity>,IT4TestRepository
+	{
+		public T4TestRepository() : base(DataBaseType.ething_news_party)
+		{
+			SetDbTableInfo(Constants.T4Test);
+		}
+    }
+}

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlOper", "XmlOper\XmlOper.csproj", "{9FD33F5B-2D12-43F2-9684-0636AE93296B}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCrawler", "WebCrawler\WebCrawler.csproj", "{94F3D370-66D4-47CD-A614-323E09B9CE20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{5A5E0E6A-7C82-4D53-AAE1-47570D1DA069}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryFramework", "ClassLibraryFramework\ClassLibraryFramework.csproj", "{455FEA52-B691-4D6F-91BA-C0E9C83C112A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -213,8 +215,27 @@ Global
 		{5A5E0E6A-7C82-4D53-AAE1-47570D1DA069}.Release|x64.Build.0 = Release|Any CPU
 		{5A5E0E6A-7C82-4D53-AAE1-47570D1DA069}.Release|x86.ActiveCfg = Release|Any CPU
 		{5A5E0E6A-7C82-4D53-AAE1-47570D1DA069}.Release|x86.Build.0 = Release|Any CPU
+		{455FEA52-B691-4D6F-91BA-C0E9C83C112A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{455FEA52-B691-4D6F-91BA-C0E9C83C112A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{455FEA52-B691-4D6F-91BA-C0E9C83C112A}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{455FEA52-B691-4D6F-91BA-C0E9C83C112A}.Debug|ARM.Build.0 = Debug|Any CPU
+		{455FEA52-B691-4D6F-91BA-C0E9C83C112A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{455FEA52-B691-4D6F-91BA-C0E9C83C112A}.Debug|x64.Build.0 = Debug|Any CPU
+		{455FEA52-B691-4D6F-91BA-C0E9C83C112A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{455FEA52-B691-4D6F-91BA-C0E9C83C112A}.Debug|x86.Build.0 = Debug|Any CPU
+		{455FEA52-B691-4D6F-91BA-C0E9C83C112A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{455FEA52-B691-4D6F-91BA-C0E9C83C112A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{455FEA52-B691-4D6F-91BA-C0E9C83C112A}.Release|ARM.ActiveCfg = Release|Any CPU
+		{455FEA52-B691-4D6F-91BA-C0E9C83C112A}.Release|ARM.Build.0 = Release|Any CPU
+		{455FEA52-B691-4D6F-91BA-C0E9C83C112A}.Release|x64.ActiveCfg = Release|Any CPU
+		{455FEA52-B691-4D6F-91BA-C0E9C83C112A}.Release|x64.Build.0 = Release|Any CPU
+		{455FEA52-B691-4D6F-91BA-C0E9C83C112A}.Release|x86.ActiveCfg = Release|Any CPU
+		{455FEA52-B691-4D6F-91BA-C0E9C83C112A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2FD2223D-68A2-4852-8124-202A86B95053}
 	EndGlobalSection
 EndGlobal

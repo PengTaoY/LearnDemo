@@ -1,0 +1,14 @@
+﻿
+
+using System;
+using System.Collections.Generic;
+using Kina.Infrastructure.Service;
+using BeeCre.EThing.Model;
+
+namespace BeeCre.EThing.Service
+{	
+	public interface IT4TestService : IService<T4TestEntity>
+	{
+	
+    }
+}
