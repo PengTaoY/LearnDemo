@@ -1,0 +1,113 @@
+﻿.draw-out {
+    width: 400px;
+    height: 400px;
+    margin: 30px auto;
+    position: relative
+}
+
+    .draw-out section {
+        width: 400px;
+        height: 1px;
+        background: #d6d6d6;
+        position: absolute;
+        top: 200px;
+        left: 0
+    }
+
+        .draw-out section.s2 {
+            transform: rotateZ(60deg)
+        }
+
+        .draw-out section.s3 {
+            transform: rotateZ(120deg)
+        }
+
+    .draw-out p {
+        position: absolute;
+    }
+
+        .draw-out p.p1 {
+            top: 105px;
+            left: 300px
+        }
+
+        .draw-out p.p2 {
+            top: 240px;
+            left: 300px
+        }
+
+        .draw-out p.p3 {
+            top: 310px;
+            left: 170px
+        }
+
+        .draw-out p.p4 {
+            top: 240px;
+            left: 60px
+        }
+
+        .draw-out p.p5 {
+            top: 105px;
+            left: 60px
+        }
+
+        .draw-out p.p6 {
+            top: 30px;
+            left: 170px
+        }
+
+.draw {
+    width: 400px;
+    height: 400px;
+    border: 2px solid #E17F27;
+    border-radius: 200px;
+    position: absolute;
+}
+
+.draw-in {
+    width: 80px;
+    height: 80px;
+    padding: 1px;
+    margin: 157px 157px;
+    transition: all 4s ease;
+    -webkit-transition: all 4s ease;
+    -moz-transition: all 4s ease;
+    -o-transition: all 4s ease;
+}
+
+    .draw-in div {
+        background: #E17F27;
+        width: 40px;
+        height: 40px;
+        border-radius: 33px;
+        position: relative;
+        margin: 20px 20px
+    }
+
+        .draw-in div .circle {
+            display: block;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-bottom: 40px solid #E17F27;
+            position: absolute;
+            left: 10px;
+            top: -44px
+        }
+
+.btn {
+    display: block;
+    margin: 30px auto;
+    width: 100px;
+    height: 30px;
+    border-radius: 6px;
+    background: #0ABF5D;
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+    text-decoration: none
+}
+
+.result p {
+    color: #c00
+}

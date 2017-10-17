@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace Demo
 {
@@ -13,37 +14,47 @@ namespace Demo
     {
         static void Main(string[] args)
         {
-            DictOp();
 
-
-            #region 线程操作
-            //Thread[] threads = new Thread[10];
-            //Account acc = new Account(1000);
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    Thread t = new Thread(new ThreadStart(acc.DoTransactions));
-            //    threads[i] = t;
-            //}
-
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    threads[i].Start();
-            //}
-            ////block main thread until all other threads have ran to completion.
-            //foreach (var t in threads)
-            //{
-            //    t.Join();
-            //}
-            #endregion
-
-
-            //Sql拼接();
-
+            内插字符串();
 
             Console.ReadKey();
 
         }
 
+
+
+        public static void 内插字符串()
+        {
+            var name = "Horace";
+            var age = 34;
+            var s1 = $"He asked, \"Is your name {name}?\", but didn't wait for a reply.";
+            Console.WriteLine(s1);
+
+            var s2 = $"{name} is {age:D3} year{(age == 1 ? "" : "s")} old.";
+            Console.WriteLine(s2);
+
+        }
+
+        public static void UseTranscationScope()
+        {
+            using (TransactionScope ts = new TransactionScope())
+            {
+                Console.WriteLine("ts开始");
+
+                var user = new MyUser();
+                user = null;
+                Console.WriteLine(user.Id);
+
+                ts.Complete();
+            }
+
+
+
+        }
+
+        /// <summary>
+        /// Dictionary 字典操作
+        /// </summary>
         public static void DictOp()
         {
             Dictionary<string, List<User>> room_user = new Dictionary<string, List<User>>();
@@ -215,6 +226,12 @@ namespace Demo
             this.ConnectionId = connectionId;
         }
 
+    }
+
+    public class MyUser
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 
     /// <summary>

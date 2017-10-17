@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/mycss.css" rel="stylesheet" />
+<h2>Index</h2>
+
+<div class="draw-out">
+    <div class="draw-bottom">
+        <section class="s1"></section>
+        <section class="s2"></section>
+        <section class="s3"></section>
+        <p class="p1">一等奖</p>
+        <p class="p2">二等奖</p>
+        <p class="p3">三等奖</p>
+        <p class="p4">四等奖</p>
+        <p class="p5">五等奖</p>
+        <p class="p6">六等奖</p>
+    </div>
+
+    <div class="draw">
+        <div class="draw-in">
+            <div><em class="circle"></em></div>
+        </div>
+    </div>
+</div>
+<a href="javascript:void(0)" class="btn">来一下</a>
+<div class="result"></div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var orignal_deg = -30;
+        var last_deg = 0;
+        var btn_flag = 0;
+        
+        $('.btn').on('click', function () {
+            
+            if (btn_flag == 0) {
+                btn_flag = 1;
+                $.post('default/result', function (response) {
+                 
+                    var rand = Math.ceil(Math.random() * 10);
+                    //$rand_deg随机度数 只能在6-54
+                    if (rand == 10) {
+                        var $rand_deg = 9 * 6;
+                    } else {
+                        var $rand_deg = rand * 6;
+                    }
+                    debugger
+                    var $curr_deg = 360 - (60 * (response.status + 1)) + $rand_deg;
+                    var deg = orignal_deg + 4 * 360 - last_deg + $curr_deg;
+
+                    orignal_deg = deg;
+                    last_deg = $curr_deg;
+
+                    var $draw = $('.draw-bottom');
+                    $draw.css({ "transform": "rotateZ(" + deg + "deg)" });
+                    setTimeout(function () {
+                        $('.result').append('<p>' + response.msg + '</p>');
+                        console.log('您转了' + $curr_deg + '度！');
+                        btn_flag = 0;
+                    }, 4000);
+                });
+            }
+        });
+    });
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
