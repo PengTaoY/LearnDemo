@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Transactions;
@@ -15,12 +16,122 @@ namespace Demo
         static void Main(string[] args)
         {
 
-            内插字符串();
+            //泛型使用();
 
+            //nnn();
+
+            // Calculator();
+            //TestList();
+            //相差天数();
+            文字替换();
             Console.ReadKey();
 
         }
 
+        public static void 文字替换()
+        {
+
+            string str = "g";
+
+            str = str.ToArray()[0].ToString() + new String('*', str.Length - 1);
+
+            Console.WriteLine(str);
+            String s = new String('*', str.Length - 1);
+
+
+        }
+
+        public static void 相差天数()
+        {
+            int ActivityDays = 0;
+            DateTime StartDate = Convert.ToDateTime("2017-2-13 23:59:59");
+            DateTime EndDate = Convert.ToDateTime("2017-2-14 00:59:59");
+
+            ActivityDays = (Convert.ToDateTime(EndDate.ToShortDateString()) - Convert.ToDateTime(StartDate.ToShortDateString())).Days + 1;
+            Console.WriteLine($"{StartDate}与{EndDate}相差天数为{ActivityDays}天");
+        }
+
+        public static void TestList()
+        {
+            List<MyUser> list = new List<MyUser>();
+            MyUser u = new MyUser();
+            for (int i = 0; i < 4; i++)
+            {
+                u.Id = i;
+                u.Name = i.ToString();
+
+                list.Add(u);
+            }
+
+            foreach (var item in list)
+            {
+                Console.WriteLine(item.Id + "  " + item.Name);
+            }
+
+            Console.WriteLine();
+
+            List<MyUser> list2 = new List<MyUser>();
+
+            for (int i = 0; i < 4; i++)
+            {
+                MyUser u2 = new MyUser();
+                u2.Id = i;
+                u2.Name = i.ToString();
+
+                list2.Add(u2);
+            }
+
+            foreach (var item in list2)
+            {
+                Console.WriteLine(item.Id + "  " + item.Name);
+            }
+        }
+
+
+        public static void Calculator()
+        {
+            string ss = "我的,天呢";
+
+            string[] wwwss = ss.Split(',');
+
+
+            //一个6位数乘以一个3位数，得到一个结果。但不清楚6位数的两个数字是什么，而且结果中有一位数字也不清楚，请编程找出问好代表的数字，答案可能有多个。
+            //表达式：12 ? 56 ? *123 = 154 ? 4987
+
+            //12?56?*123=154?4987
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    for (int k = 0; k < 10; k++)
+                    {
+                        if (((120000 + i * 1000 + 560 + j) * 123) == (15400000 + k * 10000 + 4987))
+                        {
+                            Console.WriteLine(string.Format("12{0}56{1}*123=154{2}4987", i, j, k));
+                            Console.WriteLine($@"12{i}56{j}*123=154{k}4987");
+                        }
+                    }
+                }
+            }
+
+            var sse = Enumerable.Range(0, 9).ToList().Select(w => long.Parse($"154{w}4987") / 123).Where(w => Regex.IsMatch(w.ToString(), "12\\d56\\d"));
+
+
+        }
+
+        public static string nnn()
+        {
+            int receive = 10;
+            int publish = 3;
+
+            // string nnn = Math.Round((((decimal)receive / (decimal)publish) * 100, 2, MidpointRounding.AwayFromZero).ToString();
+
+            string bbb = (((double)receive / (double)publish) * 100).ToString();
+            double dResult = (double)receive / (double)publish;
+            string ccc = Math.Round(dResult, 4).ToString();
+
+            return bbb;
+        }
 
 
         public static void 内插字符串()
@@ -83,7 +194,7 @@ namespace Demo
             int a = 1;
         }
 
-        public static void NullTest(Guid g,int i)
+        public static void NullTest(Guid g, int i)
         {
             Console.WriteLine(g);
             Console.WriteLine(i);
@@ -123,10 +234,10 @@ namespace Demo
             StringBuilder sb = new StringBuilder();
             foreach (var item in ls)
             {
-                sb.AppendFormat("{0} ",item);
+                sb.AppendFormat("{0} ", item);
             }
 
-            string s =  sb.ToString();
+            string s = sb.ToString();
 
             string a = "1";
             foreach (var item in a.Split(','))
@@ -137,7 +248,7 @@ namespace Demo
             string ss = "";
         }
 
-        public void Test1 ()
+        public void Test1()
         {
             string guid = Guid.NewGuid().ToString("N").Substring(0, 12);
 
@@ -212,7 +323,31 @@ namespace Demo
                 }
             }
         }
+
+
+        public static void 泛型使用()
+        {
+            int obj = 2;
+            泛型<int> test = new 泛型<int>(obj);
+            Console.WriteLine("int:" + test.obj);
+
+            string obj2 = "Hello world";
+            泛型<string> test1 = new 泛型<string>(obj2);
+            Console.WriteLine("String:" + test1.obj);
+            Console.Read();
+        }
     }
+
+    public class 泛型<T>
+    {
+        public T obj;
+
+        public 泛型(T obj)
+        {
+            this.obj = obj;
+        }
+    }
+
 
     public class User
     {
@@ -220,7 +355,7 @@ namespace Demo
 
         public string Name { get; set; }
 
-        public User(string name,string connectionId)
+        public User(string name, string connectionId)
         {
             this.Name = name;
             this.ConnectionId = connectionId;
@@ -262,7 +397,7 @@ namespace Demo
             // the lock keyword.
             lock (thislock)
             {
-                if (balance >=amount)
+                if (balance >= amount)
                 {
                     Console.WriteLine("Balance before Withdrawal :  " + balance);
                     Console.WriteLine("Amount to Withdraw        : -" + amount);
