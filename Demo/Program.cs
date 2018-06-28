@@ -1,8 +1,12 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -15,18 +19,443 @@ namespace Demo
     {
         static void Main(string[] args)
         {
-
             //泛型使用();
-
             //nnn();
-
             // Calculator();
             //TestList();
             //相差天数();
-            文字替换();
+            //文字替换();
+            //TaskTest();
+            //序列化();
+            //HTML操作();
+            // var s = DateTime.Now.ToString("yyyy-MM-dd");
+            // HTML操作2();
+            //TryParseExact();
+            //  ListFirstOrDefault();
+            //IntRound();
+
+            //dynamic dynamic;
+            //dynamic = new { id = 1, name = "1" };
+            //object obj = dynamic as object;
+            //var properties = GetProperties(obj);
+
+            //var columns = string.Join(",", properties);
+            //var values = string.Join(",", properties.Select(p => "?" + p));
+
+
+
+
+
             Console.ReadKey();
 
         }
+
+
+        private static void LinqSelect()
+        {
+            List<int> listint = new List<int> { 1, 2, 3 };
+
+            Console.WriteLine(string.Join(",", listint));
+
+            var listint2 = (from c in listint
+                            select c + 2).ToList();
+            Console.WriteLine(string.Join(",", listint2));
+
+            List<LinqClass> linqClasses = new List<LinqClass> { };
+            LinqClass linqClass1 = new LinqClass
+            {
+                Index = 1,
+                Name = "第一个值"
+            };
+
+            LinqClass linqClass2 = new LinqClass
+            {
+                Index = 2,
+                Name = "第二个值"
+            };
+
+            linqClasses.Add(linqClass1);
+            linqClasses.Add(linqClass2);
+
+            foreach (var item in linqClasses)
+            {
+                Console.WriteLine(item.Index + "  " + item.Name);
+            }
+
+            var dealer = (from c in linqClasses
+                          where c.Index > 0
+                          select c
+                 ).FirstOrDefault();
+            var testCar = (from c in linqClasses
+                           orderby c.Index descending
+                           select c
+                                        ).FirstOrDefault();
+
+            var testCar2 = (from c in linqClasses
+                            orderby c.Index ascending
+                            select c
+                                        ).FirstOrDefault();
+        }
+
+        public class LinqClass
+        {
+            /// <summary>
+            /// 索引
+            /// </summary>
+            public int Index { get; set; }
+
+            /// <summary>
+            /// 名称
+            /// </summary>
+            public string Name { get; set; }
+        }
+
+
+        private static string TSalEEs(string input)
+        {
+            int[] array = { 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 4, 5, 2, 3, 4, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            StringBuilder hy = new StringBuilder();
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (i % 7 == 0)
+                {
+                    hy.Append("\n");
+                }
+                if (array[i] == 0)
+                {
+                    hy.Append("  ");
+                }
+                else if (array[i] == 4)
+                {
+                    hy.Append(" ");
+                }
+                else if (array[i] == 5)
+                {
+                    hy.Append(" I ");
+                }
+                else if (array[i] == 2)
+                {
+                    hy.Append("Love ");
+                }
+                else if (array[i] == 3)
+                {
+                    hy.Append("You");
+                }
+                else
+                {
+                    hy.Append("" + input);
+                }
+            }
+            return hy.ToString();
+        }
+
+
+        #region GetProperties
+        private static List<string> GetProperties(object obj, bool isRemoveNull = false)
+        {
+            if (obj == null)
+            {
+                return new List<string>();
+            }
+            //DynamicParameters  需要引用Dapper
+            if (obj is DynamicParameters)
+            {
+                return (obj as DynamicParameters).ParameterNames.ToList();
+            }
+            if (isRemoveNull)
+            {
+                return GetPropertyInfos(obj).Where(x => x.GetValue(obj, null) != null).Select(x => x.Name).ToList();
+            }
+            else
+            {
+                return GetPropertyInfos(obj).Select(x => x.Name).ToList();
+            }
+        }
+
+        public static List<PropertyInfo> GetPropertyInfos(object obj, bool isRemoveCustomAttr = true)
+        {
+            if (obj == null)
+            {
+                return new List<PropertyInfo>();
+            }
+
+            Type objType = obj.GetType();
+            //取属性上的自定义特性
+            var noMappingProperty = new List<string>();
+            //foreach (PropertyInfo propInfo in objType.GetProperties())
+            //{
+            //    if (propInfo.GetCustomAttributes(typeof(Kina.Infrastructure.Utilities.UnMappingFieldAttribute), true).Any())
+            //    {
+            //        noMappingProperty.Add(propInfo.Name);
+            //    }
+            //}
+            List<PropertyInfo> properties;
+            //if (_paramCache.TryGetValue(obj.GetType(), out properties)) return properties.ToList();
+            properties = obj.GetType().GetProperties(BindingFlags.GetProperty | BindingFlags.Instance | BindingFlags.Public).ToList();
+
+            if (noMappingProperty.Any() && isRemoveCustomAttr)
+            {
+                properties = properties.Where(s => !noMappingProperty.Contains(s.Name)).ToList();
+            }
+            // _paramCache[obj.GetType()] = properties;
+            return properties;
+        }
+
+        #endregion
+
+
+        /// <summary>
+        /// int类型的数据四舍五入
+        /// </summary>
+        private static void IntRound()
+        {
+            int i = 3, j = 6;
+            string s = Math.Round(((float)i / (float)j), 2) * 100 + "%";
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void ListFirstOrDefault()
+        {
+            List<AppContent> list = new List<AppContent> { new AppContent { img = "1.img", text = "1" }, new AppContent { img = "2.jpg", text = "2" } };
+
+            var model = list.Select(u => u.text == "1").FirstOrDefault();
+
+            var result = (from l in list where l.text == "1" select l).FirstOrDefault();
+
+
+            Console.WriteLine();
+
+        }
+
+        public static string TryParseExact()
+        {
+            string time = "1/30/18 1:42:33 PM";
+            IFormatProvider ifp = new CultureInfo("en-US", true);
+            string[] formats = {"M/d/yyyy h:mm:ss tt", "M/d/yyyy h:mm tt","M/d/yy h:mm:ss tt",
+                         "MM/dd/yyyy hh:mm:ss", "M/d/yyyy h:mm:ss",
+                         "M/d/yyyy hh:mm tt", "M/d/yyyy hh tt",
+                         "M/d/yyyy h:mm", "M/d/yyyy h:mm",
+                         "MM/dd/yyyy hh:mm", "M/dd/yyyy hh:mm"};
+            DateTime dateValue;
+            try
+            {
+                dateValue = DateTime.ParseExact(time, formats, new CultureInfo("en-US"), DateTimeStyles.None);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            DateTime.TryParseExact(time, "M/dd/yy h:mm:ss tt", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime dd);
+
+
+            //String time = "1/30/18 1:42:33 PM";
+            //DateTime dt = DateTime.ParseExact(time, "M/d/yy h:m:s tt", System.Globalization.CultureInfo.InvariantCulture);
+            //Console.WriteLine(dt.ToString("yyyy-MM-dd HH:mm:ss"));
+
+
+            return "";
+        }
+
+
+        private static void HTML操作2()
+        {
+            string Html = "<div ><p>单纯的文本</p></div><div><img src=\"http://test-ethingnewsimg.oss-cn-qingdao.aliyuncs.com/24b409b40e5147e0a771e32e85dbbcb8.jpg\" /><p>图片嵌套的文本</p></div>";
+            List<AppContent> result = new List<AppContent>();
+            string pattern = @"<div([^^]*?)</div>";
+            MatchCollection matchCollection = Regex.Matches(Html, pattern);
+            foreach (Match item in matchCollection)
+            {
+                Console.WriteLine(item.Value);
+
+                string pattImg = "src=\"";
+                if (Regex.IsMatch(item.Value, pattImg))
+                {
+                    string pattImg2 = "src=\"([^^]*?)\"";
+                    string Img = Regex.Match(item.Value, pattImg2).Value;
+                    string resultImg = Regex.Replace(Img, "[\",src=]", "");
+
+                    string pattText = "<p>([^^]*?)</p>";
+                    string Text = Regex.Match(item.Value, pattText).Value;
+                    string resultText = Regex.Replace(Text, "[<p></p>]", "");
+
+                    AppContent content = new AppContent
+                    {
+                        img = resultImg,
+                        text = resultText
+                    };
+                    result.Add(content);
+                }
+                else
+                {
+                    string resultText = Regex.Replace(item.Value, "[<div><p></p></div>]", "");
+                    AppContent content = new AppContent
+                    {
+                        img = "",
+                        text = resultText
+                    };
+                    result.Add(content);
+                }
+
+            }
+            Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(result));
+            Console.ReadKey();
+        }
+
+        private static void HTML操作()
+        {
+            string Html = "<div ><p>单纯的文本</p></div><div class=\"img\"><div><img src=\"http://test-ethingnewsimg.oss-cn-qingdao.aliyuncs.com/24b409b40e5147e0a771e32e85dbbcb8.jpg\" /><p>图片嵌套的文本</p></div></div>";
+            List<AppContent> result = new List<AppContent>();
+            string pattern = @"<div([^^]*?)</div>";
+            MatchCollection matchCollection = Regex.Matches(Html, pattern);
+            foreach (Match item in matchCollection)
+            {
+                Console.WriteLine(item.Value);
+
+                string pattImg = "<div class=\"img\"";
+                if (Regex.IsMatch(item.Value, pattImg))
+                {
+                    string pattImg2 = "src=\"([^^]*?)\"";
+                    string Img = Regex.Match(item.Value, pattImg2).Value;
+                    string resultImg = Regex.Replace(Img, "[\",src=]", "");
+
+                    string pattText = "<p>([^^]*?)</p>";
+                    string Text = Regex.Match(item.Value, pattText).Value;
+                    string resultText = Regex.Replace(Text, "[<p></p>]", "");
+
+                    AppContent content = new AppContent
+                    {
+                        img = resultImg,
+                        text = resultText
+                    };
+                    result.Add(content);
+                }
+                else
+                {
+                    string resultText = Regex.Replace(item.Value, "[<div><p></p></div>]", "");
+                    AppContent content = new AppContent
+                    {
+                        img = "",
+                        text = resultText
+                    };
+                    result.Add(content);
+                }
+
+            }
+            Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(result));
+            Console.ReadKey();
+
+        }
+
+
+
+        private static void 序列化()
+        {
+
+
+            //var ob = Newtonsoft.Json.JsonConvert.DeserializeObject<List<string>>(input);
+
+            //foreach (var item in ob)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            List<string> list = new List<string>();
+            list.Add("item1");
+            list.Add("item2");
+            Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(list));
+
+            string json = Newtonsoft.Json.JsonConvert.SerializeObject(list);
+
+            var ob = Newtonsoft.Json.JsonConvert.DeserializeObject<List<string>>(json);
+            foreach (var item in ob)
+            {
+                Console.WriteLine(item);
+            }
+
+
+            ////////////////////////////////////////////////
+
+            Dictionary<string, string> dt = new Dictionary<string, string>();
+            dt.Add("word", "第一段文本");
+            dt.Add("pic", "第一张图片");
+            //dt.Add("word", "第二段文字");   //添加相同的键会报错
+
+            string jsonD = Newtonsoft.Json.JsonConvert.SerializeObject(dt);
+
+            var obD = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonD);
+
+
+            /////////////////////////////////////////
+            string nnn = Console.ReadLine();
+
+            var ob2 = Newtonsoft.Json.JsonConvert.DeserializeObject<List<AppContent>>(nnn);
+            foreach (var item in ob2)
+            {
+                Console.WriteLine("文字：" + item.text + "    图片：" + item.img);
+            }
+
+            var sss = Newtonsoft.Json.JsonConvert.SerializeObject(ob2);
+
+            Console.WriteLine("我勒个去的");
+        }
+
+        public class AppContent
+        {
+            public string text { get; set; }
+            public string img { get; set; }
+        }
+
+
+        private static void TaskTest()
+        {
+            var task1 = new Task(
+                () => { Console.WriteLine("Hello,Task"); }
+
+                );
+            task1.Start();
+
+            var task2 = Task.Factory.StartNew(() => { Console.WriteLine("Hello,task started by task factory"); });
+
+            Console.ReadKey();
+        }
+
+
+
+
+        #region 让人疯的代码
+        public class _____
+        {
+            public void ________(int[] ___)
+            {
+                int ____ = 0;
+                for (int ______ = ___.Length - 1; ______ > 0; --______)
+                {
+                    for (int ________ = 0; ________ < ______; ++________)
+                    {
+                        if (___[________ + 1] < ___[________])
+                        {
+                            ____ = ___[________];
+                            ___[________] = ___[________ + 1];
+                            ___[________ + 1] = ____;
+                        }
+                    }
+                }
+            }
+        }
+        #endregion
+
+
+
+
+
 
         public static void 文字替换()
         {

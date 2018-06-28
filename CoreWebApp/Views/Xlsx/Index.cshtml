@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "Excel操作";
+}
+
+<h2>ASP.NET Core 导入导出Excel xlsx 文件</h2>
+
+<a asp-action="Export" class="a"><h4>导出Excel</h4></a>
+
+
+<hr />
+<form enctype="multipart/form-data" method="post" asp-action="Import">
+    <input type="file" name="excelfile" />
+    <input class="btn" type="submit" value="上传" />
+</form>
+
+
