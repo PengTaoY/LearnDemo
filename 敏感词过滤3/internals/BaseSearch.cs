@@ -10,7 +10,7 @@ namespace 敏感词过滤3.internals
         protected TrieNode _root = new TrieNode();
 
 
-        public virtual void SetKeywords(ICollection<string> _keywords)
+        public virtual void SetKeywords(IEnumerable<string> _keywords)
         {
             var first = new TrieNode[char.MaxValue + 1];
             var root = new TrieNode();

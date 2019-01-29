@@ -1,7 +1,6 @@
 ﻿using Dapper;
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
@@ -9,7 +8,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Transactions;
 
@@ -19,6 +17,29 @@ namespace Demo
     {
         static void Main(string[] args)
         {
+            //StringBuilder sb = new StringBuilder("我爱北京天安门");
+
+            //string s = sb.Remove(sb.Length - 1, sb.Length).ToString() + "nimabi";
+
+            List<string> ls = new List<string>();
+            ls.Add("1.");
+            ls.Add("2.");
+            ls.Add("3.");
+
+            foreach (var item in ls)
+            {
+                Console.WriteLine(item);
+            }
+
+
+                ls[ls.Count - 1] = ls[ls.Count - 1].Substring(0, ls[ls.Count - 1].Length - 1);
+
+
+            foreach (var item in ls)
+            {
+                Console.WriteLine(item);
+            }
+
             //泛型使用();
             //nnn();
             // Calculator();
@@ -42,12 +63,38 @@ namespace Demo
             //var columns = string.Join(",", properties);
             //var values = string.Join(",", properties.Select(p => "?" + p));
 
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    Guid guid = Guid.NewGuid();
+            //    byte[] bytes = guid.ToByteArray();
+            //    Console.WriteLine($"原字符串：{guid}/t,To Int64以后的字符串：{BitConverter.ToInt64(bytes, 0)}"); ;
+            //}
 
 
+
+            //List<string> returnWords = new List<string>();
+            //string result = "法轮功";
+            //result = FilterSensitiveWords(result, returnWords);
 
 
             Console.ReadKey();
 
+        }
+
+        public static string FilterSensitiveWords(string sourceText, List<string> returnWords = null)
+        {
+            returnWords.Add(sourceText);
+            return sourceText + "哈哈哈哈";
+        }
+
+
+        private static void fff()
+        {
+            string text = " [{\"text\":\"油门轰积碳有用、有卵用 车辆的积炭属于沉积物，清除积碳主要是将积碳排除到发动机以外，比如拆下有积碳的部件进行清洗，比如节气门，进气道等，也可以使用免拆清洗的方式进行，但是需要注意必须使用专用的清洗剂才可以。\",\"img\":\"\",\"notes\":\"\"},{\"text\":\"\",\"img\":\"http://test-ethingnewsimg.oss-cn-qingdao.aliyuncs.com/dbbda9aeb7424796b60609930518b743.jpg\",\"notes\":\"\"},{\"text\":\"很多车主都听到过这样的声音，高速行驶可以清除积炭。这样是可以的，但是不建议刻意的这样做，如果积碳过多，基本上作用不是很大。 四， 怎样预防积碳\",\"img\":\"\",\"notes\":\"\"},{\"text\":\"\",\"img\":\"http://test-ethingnewsimg.oss-cn-qingdao.aliyuncs.com/dbf1c612f135456bb27b57ea5487288b.jpg\",\"notes\":\"\"},{\"text\":\"由于车辆的积碳是一个日积月累的过程，所以说完全的避免不了积碳的产生，不过我们还是有一些小方法可以减缓积碳的形成，给大家列举一下。 （1）	加油站的正规汽油，不要贪图小便宜加次油（PS，品质好不是说明要必须添加标号高的汽油，添加车辆推荐的汽油就可以，不必非得加97）\",\"img\":\"\",\"notes\":\"\"},{\"text\":\"\",\"img\":\"http://test-ethingnewsimg.oss-cn-qingdao.aliyuncs.com/69b7db3f75c2400e976fa8377cfc0def.jpg\",\"notes\":\"\"},{\"text\":\"（2） 尽量避免长时间怠速或者经常的短途行驶。 （3）养成良好的驾驶习惯，不要经常急加油门。（4） 按照规定的保养提示对车辆进行保养。添加正规机油。\",\"img\":\"\",\"notes\":\"\"},{\"text\":\"\",\"img\":\"http://test-ethingnewsimg.oss-cn-qingdao.aliyuncs.com/f283265197b047f8abbeda97d93da98c.jpg\",\"notes\":\"\"},{\"text\":\"（5） 建议添加原厂的添加剂，如果想添加正规的添加剂，最好去维修站进行购买。\",\"img\":\"\",\"notes\":\"\"}]";
+
+            string result = text.Replace(">", "&gt;").Replace("<", "&lt;").Replace(" ", "&nbsp;").Replace("\"", "&quot;").Replace("\'", "&#39;").Replace("\\", "\\\\").Replace("\n", "\\n").Replace("\r", "\\r");
+
+            string s = "";
         }
 
 
